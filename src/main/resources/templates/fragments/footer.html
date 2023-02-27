@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<footer class="footer mt-auto py-3 bg-info" th:fragment="footer">
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div th:if="${message}">
+                <h3 th:text="${message}"/>
+            </div>
+        </div>
+        <div class ="container">
+            <p class="attribution">"<a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/71195909@N03/33272595691">Quiz</a>" by <a target="_blank" rel="noopener noreferrer" href="https://www.flickr.com/photos/71195909@N03">Shahid Abdullah</a> is marked with <a target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/publicdomain/mark/1.0//?ref=openverse">Public Domain Mark 1.0 <img src="https://mirrors.creativecommons.org/presskit/icons/pd.svg" style="height: 1em; margin-right: 0.125em; display: inline;"></img></a>. </p>
+            <div class="text-muted">Created with love <i class="fa-solid fa-heart"></i> by afarentino</div>
+            <br>
+            <div class="text-muted">Released under the <a href="https://choosealicense.com/licenses/apache-2.0/">Apache License 2.0</a></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
