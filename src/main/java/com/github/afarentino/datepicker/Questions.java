@@ -1,10 +1,14 @@
 package com.github.afarentino.datepicker;
 
 public class Questions {
-    String name;
+    String firstName;
+    String lastName;
     String email;
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getFirstName() { return this.firstName; }
+    public void setFirstName(String name) { this.firstName = name; }
+
+    public String getLastName() { return this.lastName; }
+    public void setLastName(String val) { this.lastName = val; }
 
     public String getEmail() { return email; }
 
