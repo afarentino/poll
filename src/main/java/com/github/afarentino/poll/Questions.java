@@ -1,4 +1,4 @@
-package com.github.afarentino.datepicker;
+package com.github.afarentino.poll;
 
 public class Questions {
     String firstName;

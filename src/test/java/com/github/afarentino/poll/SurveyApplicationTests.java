@@ -1,10 +1,10 @@
-package com.github.afarentino.datepicker;
+package com.github.afarentino.poll;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatepickerApplicationTests {
+class SurveyApplicationTests {
 
 	@Test
 	void contextLoads() {

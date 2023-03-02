@@ -1,4 +1,4 @@
-package com.github.afarentino.datepicker;
+package com.github.afarentino.poll;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
