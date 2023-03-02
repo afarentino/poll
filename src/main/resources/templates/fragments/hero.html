@@ -58,7 +58,9 @@
 <!-- Hero component -->
 <div class="jumbotron" th:fragment="hero">
     <div class="container">
-        <h1>Hello BSG Member!</h1>
+        <h1 th:if="${user != null}" th:inline="text">Hello [[${user}]]!</h1>
+        <h2 th:if="${user != null}">Thank you for your participation. Your response has been recorded.</h2>
+        <h1 th:if="${user == null}">Hello BSG Member!</h1>
     </div>
 </div>
 </body>

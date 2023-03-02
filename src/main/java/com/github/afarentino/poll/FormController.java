@@ -26,6 +26,7 @@ public class FormController {
     @PostMapping("/survey")
     public String answersSubmit(@ModelAttribute Questions answers, Model model) {
         storage.save(answers);
+        model.addAttribute("user", answers.getFirstName());
         model.addAttribute("questions", answers);
         return "thanks";
     }
