@@ -23,7 +23,7 @@ public class SurveyApplication {
 		return this.answerFile;
 	}
 	@Bean
-	CommandLineRunner init(FileService fileService) {
+	CommandLineRunner init(CsvFileService fileService) {
 		return (args) -> {
 			logger.info("Application initialization complete. CSV file in use is " + answerFile);
 		};

@@ -6,18 +6,21 @@ import org.apache.commons.csv.CSVPrinter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.*;
 
 @Service
-public class FileService implements AnswersRepository, Closeable {
+public class CsvFileService implements AnswersRepository, Closeable {
 
-    private static final Logger logger = LoggerFactory.getLogger(FileService.class);
+    private static final Logger logger = LoggerFactory.getLogger(CsvFileService.class);
     private static Path currentWorkingDir = Paths.get("").toAbsolutePath();
     private static final String fileSeparator = File.separator;
 
@@ -28,11 +31,11 @@ public class FileService implements AnswersRepository, Closeable {
     private CSVPrinter printer;
 
     @Autowired
-    private FileService(String fileName) {
+    private CsvFileService(String fileName) {
         init(fileName);
     }
 
-    private void init(String fileName) {
+    private synchronized void init(String fileName) {
         this.csvPath = FileSystems.getDefault().getPath(fileName);
 
         //TODO: Allow reset all to work here...
@@ -49,18 +52,34 @@ public class FileService implements AnswersRepository, Closeable {
             throw new RuntimeException("Failed to init FileService", e);
         }
     }
-    synchronized public void save(Questions data) {
+    public synchronized void save(Questions data) {
         try {
             printer.printRecord(data.firstName, data.lastName, data.email);
+            // Flush results to file immediately while we hold the write lock
+            printer.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void close() throws IOException {
+    public synchronized Resource answersCsv() {
+        try {
+            Resource resource = new UrlResource(this.csvPath.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return resource;
+            } else {
+                throw new IllegalStateException("Attempt to fetch CSV from unreadable path");
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Could not read answers CSV file", e);
+        }
+    }
+
+    @Override
+    public synchronized void close() throws IOException {
         this.writer.close();
-        this.printer.close();
+        this.printer.close(true);
     }
 
     @PreDestroy
