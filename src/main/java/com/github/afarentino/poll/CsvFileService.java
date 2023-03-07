@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class CsvFileService implements AnswersRepository, Closeable {
@@ -24,7 +26,15 @@ public class CsvFileService implements AnswersRepository, Closeable {
     private static Path currentWorkingDir = Paths.get("").toAbsolutePath();
     private static final String fileSeparator = File.separator;
 
-    private static final String[] HEADERS = { "First Name", "Last Name", "Email" };
+    private static final String[] HEADERS = { "Timestamp",
+            "First Name",
+            "Last Name",
+            "Email",
+            "6pm Week1", "6:30pm Week1", "7pm Week1", "7:30pm Week1",
+            "6pm Week2", "6:30pm Week2", "7pm Week2",
+            "7:30pm Week2" };
+
+    private static final String[] DAYS = { "Mon", "Tue", "Wed", "Thu", "Fri" };
     private Path csvPath;
     private BufferedWriter writer;
     private CSVFormat format;
@@ -44,7 +54,7 @@ public class CsvFileService implements AnswersRepository, Closeable {
             csvPath.toFile().delete();
         }
         logger.info("Creating a new CSV file header");
-        this.format = CSVFormat.DEFAULT.builder().setHeader(HEADERS).build();
+        this.format = CSVFormat.EXCEL.builder().setHeader(HEADERS).build();
         try {
             this.writer = Files.newBufferedWriter(this.csvPath, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
             this.printer = new CSVPrinter(writer, format);
@@ -52,9 +62,14 @@ public class CsvFileService implements AnswersRepository, Closeable {
             throw new RuntimeException("Failed to init FileService", e);
         }
     }
+    private String timeStamp() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
+    }
     public synchronized void save(Questions data) {
         try {
-            printer.printRecord(data.firstName, data.lastName, data.email);
+            printer.printRecord(timeStamp(), data.getFirstName(), data.getLastName(), data.getEmail());
             // Flush results to file immediately while we hold the write lock
             printer.flush();
         } catch (IOException e) {
@@ -84,7 +99,7 @@ public class CsvFileService implements AnswersRepository, Closeable {
 
     @PreDestroy
     public void destroy() {
-        logger.info("Callback triggered - @PreDestroy.");
+        logger.info("Callback triggered - @PreDestroy CsvFileService.");
         try {
             this.close();
         } catch (IOException e) {

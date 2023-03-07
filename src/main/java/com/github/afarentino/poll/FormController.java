@@ -10,14 +10,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class FormController {
@@ -35,9 +34,12 @@ public class FormController {
 
     @PostMapping("/survey")
     public String answersSubmit(@ModelAttribute Questions answers, Model model) {
+
         storage.save(answers);
+
         model.addAttribute("user", answers.getFirstName());
         model.addAttribute("questions", answers);
+
         return "thanks";
     }
 
