@@ -31,10 +31,19 @@ public class Questions {
         return this.checkboxes;
     }
 
-    public void setCheckboxes(String[][] val) { this.checkboxes = val; }
+    public void setCheckboxes(String[][] val) {
+        this.checkboxes = val;
+    }
 
     public String[] getTimes() {
-        return Questions.times;
+        return this.times;
+    }
+
+    public String timeAt(int index) {
+        return times[index];
+    }
+    public void setTimes(String[] values) {
+        this.times = values;
     }
 
 

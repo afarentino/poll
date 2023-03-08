@@ -18,6 +18,8 @@ import java.net.MalformedURLException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Service
 public class CsvFileService implements AnswersRepository, Closeable {
@@ -30,9 +32,9 @@ public class CsvFileService implements AnswersRepository, Closeable {
             "First Name",
             "Last Name",
             "Email",
-            "6pm Week1", "6:30pm Week1", "7pm Week1", "7:30pm Week1",
-            "6pm Week2", "6:30pm Week2", "7pm Week2",
-            "7:30pm Week2" };
+            "6pm Week 1", "6:30pm Week 1", "7pm Week 1", "7:30pm Week 1",
+            "6pm Week 2", "6:30pm Week 2", "7pm Week 2",
+            "7:30pm Week 2" };
 
     private static final String[] DAYS = { "Mon", "Tue", "Wed", "Thu", "Fri" };
     private Path csvPath;
@@ -42,20 +44,28 @@ public class CsvFileService implements AnswersRepository, Closeable {
 
     @Autowired
     private CsvFileService(String fileName) {
-        init(fileName);
+        this.csvPath = FileSystems.getDefault().getPath(fileName);
     }
 
-    private synchronized void init(String fileName) {
-        this.csvPath = FileSystems.getDefault().getPath(fileName);
-
-        //TODO: Allow reset all to work here...
+    @Override
+    public synchronized void reset() {
         if (csvPath.toFile().exists()) {
             logger.info("Prior answer file detected. Removing it.");
             csvPath.toFile().delete();
         }
-        logger.info("Creating a new CSV file header");
-        this.format = CSVFormat.EXCEL.builder().setHeader(HEADERS).build();
+        init();
+    }
+    @Override
+    public synchronized void init() {
+        logger.info("Initializing the CSVFileService");
         try {
+            //TODO: check that the file is not zero bytes
+            if (csvPath.toFile().exists()) {
+                this.format = CSVFormat.EXCEL.builder().setHeader(HEADERS).setSkipHeaderRecord(true).build();
+            }
+            else {
+                this.format = CSVFormat.EXCEL.builder().setHeader(HEADERS).build();
+            }
             this.writer = Files.newBufferedWriter(this.csvPath, StandardOpenOption.APPEND, StandardOpenOption.CREATE);
             this.printer = new CSVPrinter(writer, format);
         } catch (IOException e) {
@@ -69,7 +79,34 @@ public class CsvFileService implements AnswersRepository, Closeable {
     }
     public synchronized void save(Questions data) {
         try {
-            printer.printRecord(timeStamp(), data.getFirstName(), data.getLastName(), data.getEmail());
+            String[][] checkedDays = data.getCheckboxes();
+            Map<String,String> timeDayMap = new LinkedHashMap<>();
+
+            for (int i = 0; i < checkedDays.length; i++ ) {
+               String timeSlot = data.timeAt(i);
+               String days = "";
+                for (int j = 0; j < checkedDays[i].length; j++) {
+                   if (checkedDays[i][j] != null) {
+                       days += (days.isEmpty()) ? checkedDays[i][j] : ", " + checkedDays[i][j];
+                   }
+               }
+               // Add timeSlot entry to map
+               timeDayMap.put(timeSlot, days);
+            }
+
+            printer.printRecord(timeStamp(),
+                    data.getFirstName(),
+                    data.getLastName(),
+                    data.getEmail(),
+                    timeDayMap.get("6pm Week 1"),
+                    timeDayMap.get("6:30pm Week 1"),
+                    timeDayMap.get("7pm Week 1"),
+                    timeDayMap.get("7:30pm Week 1"),
+                    timeDayMap.get("6pm Week 2"),
+                    timeDayMap.get("6:30pm Week 2"),
+                    timeDayMap.get("7pm Week 2"),
+                    timeDayMap.get("7:30pm Week 2"));
+
             // Flush results to file immediately while we hold the write lock
             printer.flush();
         } catch (IOException e) {
