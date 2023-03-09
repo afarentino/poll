@@ -1,10 +1,5 @@
 package com.github.afarentino.poll;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Questions {
     private String firstName;
     private String lastName;
