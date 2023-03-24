@@ -6,17 +6,21 @@ plugins {
 }
 
 group = 'com.github.afarentino'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.3-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
 }
 
+// This line allows environment variables to be passed as -D (system props)
+bootRun.systemProperties = System.properties
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.apache.commons:commons-csv:1.10.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
