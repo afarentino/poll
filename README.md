@@ -47,7 +47,7 @@ For it's ease of use and ability to scale from 0 to n instances as-needed on dem
 This kept costs down and allowed the application to be spun up only when users clicked a link shared with them via email.
 
 ## Limitations
-1. At this time, it is a heavy lift to design, add or display alternate questions. A configurable question provider would be a great feature to have as it would make possible to use this project for other surveys and questions.
+1. At this time, it is a heavy lift to design, add or display alternate questions. A configurable question provider would be a great feature to have.
 
 
 2. Deployment instructions (for each cloud platform) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
