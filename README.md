@@ -34,7 +34,6 @@ popular No-Code Form Builders such as [SurveyMonkey](https://www.surveymonkey.co
 * Java 17
 * [Spring Boot 3.0+](https://spring.io/blog/2022/05/24/preparing-for-spring-boot-3-0) 
 * [ThymeLeaf Java template engine](https://www.thymeleaf.org/) 
-* JavaScript ES6+ (plainJS) - used to render the form
 * [MDBootstrap](https://mdbootstrap.com/) 
 * [MongoDB Atlas](https://www.mongodb.com/atlas/database) NoSQL document database - to store survey results
 * Gradle 
