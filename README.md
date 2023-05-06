@@ -53,7 +53,7 @@ This kept costs down and allowed the application to be spun up only when users c
 
 ## Contributing
 
-Creating new opportunities for innovation and collaboration are what make open source software special.
+Creating new opportunities for innovation and collaboration is what make open source software special.
 
 If you would like to use this code in a derived work of your own, please [fork the repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks).  
 
