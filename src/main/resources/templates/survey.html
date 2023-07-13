@@ -105,290 +105,479 @@
                 </div>
                 <div class="table-responsive-sm">
                     <table class="table caption-top table-striped w-auto">
-                        <caption><strong>Please select your preferred meeting start times.</strong><br>Times are in ET (Eastern Standard Time)
-                            and are 1 hour in duration
+                        <caption><strong>Please select your available dates.</strong><br>Times are in ET (Eastern Standard Time).
                         </caption>
+                        <!-- TODO: Use ThymeLeaf to dynamically build this layout based on Question -->
                         <thead>
                         <tr>
-                            <th scope="col">Start Time</th>
-                            <th scope="col">Week</th>
-                            <th scope="col">Mon</th>
-                            <th scope="col">Tue</th>
-                            <th scope="col">Wed</th>
-                            <th scope="col">Thu</th>
-                            <th scope="col">Fri</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">11am</th>
+                            <th scope="col">11:30am</th>
+                            <th scope="col">12pm</th>
+                            <th scope="col">12:30pm</th>
+                            <th scope="col">1pm</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row"><input type="hidden" name="times[0]" value="6pm Week 1"/>6pm</th>
-                            <th scope="row">1st</th>
+                            <th scope="row"><input type="hidden" name="keys[0]" value="8/5 (Sat)"/>8/5 (Sat)</th>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][0]" id="6pm-mon-wk1" value="Mon"/>
-                                    <label class="form-check-label d-none" for="6pm-mon-wk1">6pm Week 1 Mon</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][0]" id="11am-8-5" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-5">11am 8-5</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][1]" id="6pm-tue-wk1" value="Tue"/>
-                                    <label class="form-check-label d-none" for="6pm-mon-wk1">6pm Week1 Tue</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][1]" id="1130am-8-5" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-5">11:30am 8-5</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][2]" id="6pm-wed-wk1" value="Wed"/>
-                                    <label class="form-check-label d-none" for="6pm-wed-wk1">6pm Week 1 Wed</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][2]" id="12pm-8-5" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-5">12pm 8-5</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][3]" id="6pm-thu-wk1" value="Thu"/>
-                                    <label class="form-check-label d-none" for="6pm-thu-wk1">6pm Week 1 Thu</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][3]" id="1230pm-8-5" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-5">12:30pm 8-5</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][4]" id="6pm-fri-wk1" value="Fri"/>
-                                    <label class="form-check-label d-none" for="6pm-fri-wk1">6pm Week 1 Fri</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="hidden" name="times[1]" value="6:30pm Week 1"/>6:30pm</th>
-                            <th scope="row">1st</th>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][0]" id="630pm-mon-wk1" value="Mon"/>
-                                    <label class="form-check-label d-none" for="630pm-mon-wk1">Mon 6:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][1]" id="630pm-tue-wk1" value="Tue"/>
-                                    <label class="form-check-label d-none" for="630pm-tue-wk1">Tue 6:30pm Week1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][2]" id="630pm-wed-wk1" value="Wed"/>
-                                    <label class="form-check-label d-none" for="630pm-wed-wk1">Wed 6:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][3]" id="630pm-thu-wk1" value="Thu"/>
-                                    <label class="form-check-label d-none" for="630pm-thu-wk1">Thu 6:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][4]" id="630pm-fri-wk1" value="Fri"/>
-                                    <label class="form-check-label d-none" for="630pm-fri-wk1">Fri 6:30pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[0][4]" id="1pm-8-5" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-5">1pm 8-5</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><input type="hidden" name="times[2]" value="7pm Week 1"/>7pm</th>
-                            <th scope="row">1st</th>
+                            <th scope="row"><input type="hidden" name="keys[1]" value="8/6 (Sun)"/>8/6 (Sun)</th>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][0]" id="7pm-mon-wk1" value="Mon"/>
-                                    <label class="form-check-label d-none" for="7pm-mon-wk1">Mon 7pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][0]" id="11am-8-6" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-6">11am 8-6</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][1]" id="7pm-tue-wk1" value="Tue"/>
-                                    <label class="form-check-label d-none" for="7pm-tue-wk1">Tue 7pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][1]" id="1130am-8-6" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-6">11:30am 8-6</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][2]" id="7pm-wed-wk1" value="Wed"/>
-                                    <label class="form-check-label d-none" for="7pm-wed-wk1">Wed 7pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][2]" id="12pm-8-6" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-6">12pm 8-6</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][3]" id="7pm-thu-wk1" value="Thu"/>
-                                    <label class="form-check-label d-none" for="7pm-thu-wk1">Thu 7pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][3]" id="1230pm-8-6" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-6">12:30pm 8-6</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][4]" id="7pm-fri-wk1" value="Fri"/>
-                                    <label class="form-check-label d-none" for="7pm-fri-wk1">Fri 7pm Week 1</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="hidden" name="times[3]" value="7:30pm Week 1"/>7:30pm</th>
-                            <th scope="row">1st</th>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][0]" id="730pm-mon-wk1" value="Mon"/>
-                                    <label class="form-check-label d-none" for="730pm-mon-wk1">Mon 7:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][1]" id="730pm-tue-wk1" value="Tue"/>
-                                    <label class="form-check-label d-none" for="730pm-tue-wk1">Tue 7:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][2]" id="730pm-wed-wk1" value="Wed"/>
-                                    <label class="form-check-label d-none" for="730pm-wed-wk1">Wed 7:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][3]" id="730pm-thu-wk1" value="Thu"/>
-                                    <label class="form-check-label d-none" for="730pm-thu-wk1">Thu 7:30pm Week 1</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][4]" id="730pm-fri-wk1" value="Fri"/>
-                                    <label class="form-check-label d-none" for="730pm-fri-wk1">Fri 7:30pm Week 1</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[1][4]" id="1pm-8-6" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-6">1pm 8-6</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><input type="hidden" name="times[4]" value="6pm Week 2"/>6pm</th>
-                            <th scope="row">2nd</th>
+                            <th scope="row"><input type="hidden" name="keys[2]" value="8/12 (Sat)"/>8/12 (Sat)</th>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][0]" id="6pm-mon-wk2" value="Mon"/>
-                                    <label class="form-check-label d-none" for="6pm-mon-wk2">Mon 6pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][0]" id="11am-8-12" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-12">11am 8-12</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][1]" id="6pm-tue-wk2" value="Tue"/>
-                                    <label class="form-check-label d-none" for="6pm-tue-wk2">Tue 6pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][1]" id="1130am-8-12" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-12">11:30am 8-12</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][2]" id="6pm-wed-wk2" value="Wed"/>
-                                    <label class="form-check-label d-none" for="6pm-wed-wk2">Wed 6pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][2]" id="12pm-8-12" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-12">12pm 8-12</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][3]" id="6pm-thu-wk2" value="Thu"/>
-                                    <label class="form-check-label d-none" for="6pm-thu-wk2">Thu 6pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][3]" id="1230pm-8-12" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-12">12:30pm 8-12</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][4]" id="6pm-fri-wk2" value="Fri"/>
-                                    <label class="form-check-label d-none" for="6pm-fri-wk2">Fri 6pm Week 2</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="hidden" name="times[5]" value="6:30pm Week 2"/>6:30pm</th>
-                            <th scope="row">2nd</th>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][0]" id="630pm-mon-wk2" value="Mon"/>
-                                    <label class="form-check-label d-none" for="630pm-mon-wk2">Mon 6:30pm Week 2</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][1]" id="630pm-tue-wk2" value="Tue"/>
-                                    <label class="form-check-label d-none" for="630pm-tue-wk2">Tue 6:30pm Week 2</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][2]" id="630pm-wed-wk2" value="Wed"/>
-                                    <label class="form-check-label d-none" for="630pm-wed-wk2">Wed 6:30pm Week 2</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][3]" id="630pm-thu-wk2" value="Thu"/>
-                                    <label class="form-check-label d-none" for="630pm-thu-wk2">Thu 6:30pm Week 2</label>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][4]" id="630pm-fri-wk2" value="Fri"/>
-                                    <label class="form-check-label d-none" for="630pm-fri-wk2">Fri 6:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[2][4]" id="1pm-8-12" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-12">1pm 8-12</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><input type="hidden" name="times[6]" value="7pm Week 2"/>7pm</th>
-                            <th scope="row">2nd</th>
+                            <th scope="row"><input type="hidden" name="keys[3]" value="8/13 (Sun)"/>8/13 (Sun)</th>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][0]" id="7pm-mon-wk2" value="Mon"/>
-                                    <label class="form-check-label d-none" for="7pm-mon-wk2">Mon 7pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][0]" id="11am-8-13" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-13">11am 8-13</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][1]" id="7pm-tue-wk2" value="Tue"/>
-                                    <label class="form-check-label d-none" for="7pm-tue-wk2">Tue 7pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][1]" id="1130am-8-13" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-13">11:30am 8-13</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][2]" id="7pm-wed-wk2" value="Wed"/>
-                                    <label class="form-check-label d-none" for="7pm-wed-wk2">Wed 7pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][2]" id="12pm-8-13" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-13">12pm 8-13</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][3]" id="7pm-thu-wk2" value="Thu"/>
-                                    <label class="form-check-label d-none" for="7pm-thu-wk2">Thu 7pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][3]" id="1230pm-8-13" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-13">12:30pm 8-13</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][4]" id="7pm-fri-wk2" value="Fri"/>
-                                    <label class="form-check-label d-none" for="7pm-fri-wk2">Fri 7pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[3][4]" id="1pm-8-13" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-13">1pm 8-13</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><input type="hidden" name="times[7]" value="7:30pm Week 2"/>7:30pm</th>
-                            <th scope="row">2nd</th>
+                            <th scope="row"><input type="hidden" name="keys[4]" value="8/19 (Sat)"/>8/19 (Sat)</th>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][0]" id="730pm-mon-wk2" value="Mon"/>
-                                    <label class="form-check-label d-none" for="730pm-mon-wk2">Mon 7:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][0]" id="11am-8-19" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-19">11am 8-19</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][1]" id="730pm-tue-wk2" value="Tue"/>
-                                    <label class="form-check-label d-none" for="730pm-tue-wk2">Tue 7:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][1]" id="1130am-8-19" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-19">11:30am 8-19</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][2]" id="730pm-wed-wk2" value="Wed"/>
-                                    <label class="form-check-label d-none" for="730pm-wed-wk2">Wed 7:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][2]" id="12pm-8-19" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-19">12pm 8-19</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][3]" id="730pm-thu-wk2" value="Thu"/>
-                                    <label class="form-check-label d-none" for="730pm-thu-wk2">Thu 7:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][3]" id="1230pm-8-19" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-19">12:30pm 8-19</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][4]" id="730pm-fri-wk2" value="Fri"/>
-                                    <label class="form-check-label d-none" for="730pm-fri-wk2">Fri 7:30pm Week 2</label>
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[4][4]" id="1pm-8-19" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-19">1pm 8-19</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[5]" value="8/20 (Sun)"/>8/20 (Sun)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][0]" id="11am-8-20" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-5">11am 8-20</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][1]" id="1130am-8-20" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-5">11:30am 8-20</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][2]" id="12pm-8-20" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-20">12pm 8-20</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][3]" id="1230pm-8-20" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-20">12:30pm 8-20</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[5][4]" id="1pm-8-20" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-20">1pm 8-20</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[6]" value="8/26 (Sat)"/>8/26 (Sat)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][0]" id="11am-8-26" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-26">11am 8-26</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][1]" id="1130am-8-26" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-26">11:30am 8-26</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][2]" id="12pm-8-26" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-26">12pm 8-26</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][3]" id="1230pm-8-26" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-26">12:30pm 8-26</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[6][4]" id="1pm-8-26" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-26">1pm 8-26</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[7]" value="8/27 (Sun)"/>8/27 (Sun)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][0]" id="11am-8-27" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-5">11am 8-27</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][1]" id="1130am-8-27" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-27">11:30am 8-27</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][2]" id="12pm-8-27" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-8-27">12pm 8-27</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][3]" id="1230pm-8-27" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-8-27">12:30pm 8-27</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[7][4]" id="1pm-8-27" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-8-27">1pm 8-27</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[8]" value="9/2 (Sat)"/>9/2 (Sat)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[8][0]" id="11am-9-2" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-8-5">11am 8-5</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[8][1]" id="1130am-9-2" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-9-2">11:30am 9-2</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[8][2]" id="12pm-9-2" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-2">12pm 9-2</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[8][3]" id="1230pm-9-2" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-2">12:30pm 9-2</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[8][4]" id="1pm-9-2" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-2">1pm 9-2</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[9]" value="9/3 (Sun)"/>9/3 (Sun)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[9][0]" id="11am-9-3" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-9-3">11am 9-3</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[9][1]" id="1130am-9-3" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-9-3">11:30am 9-3</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[9][2]" id="12pm-9-3" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-3">12pm 9-3</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[9][3]" id="1230pm-9-3" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-3">12:30pm 9-3</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[9][4]" id="1pm-9-3" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-3">1pm 9-3</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[10]" value="9/9 (Sat)"/>9/9 (Sat)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[10][0]" id="11am-9-9" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-9-9">11am 9-9</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[10][1]" id="1130am-9-9" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-9-9">11:30am 9-9</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[10][2]" id="12pm-9-9" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-9">12pm 9-9</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[10][3]" id="1230pm-9-9" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-9">12:30pm 9-9</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[10][4]" id="1pm-9-9" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-9">1pm 9-9</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[11]" value="9/10 (Sun)"/>9/10 (Sun)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[11][0]" id="11am-9-10" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-9-10">11am 9-10</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[11][1]" id="1130am-9-10" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-9-10">11:30am 9-10</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[11][2]" id="12pm-9-10" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-10">12pm 9-10</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[11][3]" id="1230pm-9-10" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-10">12:30pm 9-10</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[11][4]" id="1pm-9-10" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-10">1pm 9-10</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[12]" value="9/16 (Sat)"/>9/16 (Sat)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[12][0]" id="11am-9-16" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-9-16">11am 9-16</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[12][1]" id="1130am-9-16" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-9-16">11:30am 9-16</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[12][2]" id="12pm-9-16" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-16">12pm 9-16</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[12][3]" id="1230pm-9-16" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-16">12:30pm 9-16</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[12][4]" id="1pm-9-16" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-16">1pm 9-16</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><input type="hidden" name="keys[13]" value="9/17 (Sun)"/>9/17 (Sun)</th>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[13][0]" id="11am-9-17" value="11am"/>
+                                    <label class="form-check-label d-none" for="11am-9-17">11am 9-17</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[13][1]" id="1130am-9-17" value="11:30am"/>
+                                    <label class="form-check-label d-none" for="1130am-8-5">11:30am 9-17</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[13][2]" id="12pm-9-17" value="12pm"/>
+                                    <label class="form-check-label d-none" for="12pm-9-17">12pm 9-17</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[13][3]" id="1230pm-9-17" value="12:30pm"/>
+                                    <label class="form-check-label d-none" for="1230pm-9-17">12:30pm 9-17</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="checkboxes[13][4]" id="1pm-9-17" value="1pm"/>
+                                    <label class="form-check-label d-none" for="1pm-9-17">1pm 9-17</label>
                                 </div>
                             </td>
                         </tr>

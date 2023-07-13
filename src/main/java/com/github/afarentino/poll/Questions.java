@@ -1,12 +1,14 @@
 package com.github.afarentino.poll;
 
 public class Questions {
+    public final int KEYS = 14;
+    public final int VALUES = 5;
     private String firstName;
     private String lastName;
     private String email;
 
     private String[][] checkboxes;
-    private String[] times;
+    private String[] keys;
 
     public String getFirstName() { return this.firstName; }
     public void setFirstName(String name) { this.firstName = name; }
@@ -15,8 +17,8 @@ public class Questions {
     public void setLastName(String val) { this.lastName = val; }
 
     public Questions() {
-        this.checkboxes = new String[2][5];
-        this.times = new String[2];
+        this.checkboxes = new String[KEYS][VALUES];  // Spring MVC will fill these at runtime when form is bound
+        this.keys = new String[KEYS];
     }
     public String getEmail() { return email; }
 
@@ -30,15 +32,15 @@ public class Questions {
         this.checkboxes = val;
     }
 
-    public String[] getTimes() {
-        return this.times;
+    public String[] getKeys() {
+        return this.keys;
     }
 
-    public String timeAt(int index) {
-        return times[index];
+    public String keyAt(int index) {
+        return keys[index];
     }
     public void setTimes(String[] values) {
-        this.times = values;
+        this.keys = values;
     }
 
 
