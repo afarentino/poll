@@ -65,7 +65,10 @@
     <p th:text="'Last Name: ' + ${questions.lastName}" /></p>
     <p th:text="'Email: ' + ${questions.email}" /></p>
     <a href="/survey" class="btn btn-primary">Submit another response</a>
-    <a href="/survey/results" class="btn btn-secondary" download="CSV Download">See how others voted</a>
+    <!-- If admin is set show how others voted -->
+    <th:block th:if="${admin}">
+        <a href="/survey/results" class="btn btn-secondary" download="CSV Download">See how others voted</a>
+    </th:block>
 </div>
 <footer class="footer mt-auto py-3 bg-info" th:replace="~{fragments/footer :: footer}">
     <div class="navbar navbar-default navbar-fixed-bottom">

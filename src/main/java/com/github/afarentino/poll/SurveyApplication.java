@@ -36,13 +36,6 @@ public class SurveyApplication implements ApplicationRunner {
 	}
 
 	@Bean
-	ApplicationRunner runner(Environment env,
-							 @Value("${spring.data.mongodb.uri}") String mongoDBUri) {
-		return args -> {
-			logger.info("spring.data.mongodb.uri is " + mongoDBUri);
-		};
-	}
-	@Bean
 	CommandLineRunner init(CsvFileService fileService, EntryRepository entryStore) {
 		return (args) -> {
 			if (this.adminResetAll) {

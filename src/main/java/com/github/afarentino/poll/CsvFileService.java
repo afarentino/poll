@@ -11,7 +11,6 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
-import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,11 +33,9 @@ public class CsvFileService implements AnswersRepository {
             "First Name",
             "Last Name",
             "Email",
-            "6pm Week 1", "6:30pm Week 1", "7pm Week 1", "7:30pm Week 1",
-            "6pm Week 2", "6:30pm Week 2", "7pm Week 2",
-            "7:30pm Week 2" };
+            "8/5 (Sat)", "8/6 (Sun)", "8/12 (Sat)", "8/13 (Sun)", "8/19 (Sat)", "8/20 (Sun)", "8/26 (Sat)",
+            "8/27 (Sun)", "9/2 (Sat)", "9/3 (Sun)", "9/9 (Sat)", "9/10 (Sun)", "9/16 (Sat)", "9/17 (Sun)" };
 
-    private static final String[] DAYS = { "Mon", "Tue", "Wed", "Thu", "Fri" };
     private Path csvPath;
     private CSVFormat format;
 
@@ -68,10 +65,10 @@ public class CsvFileService implements AnswersRepository {
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
-    private void store(Questions data, Map<String,String> timeDayMap) {
+    private void store(Questions data, Map<String,String> keyValueMap) {
         List<TimeSlot> timeSlots = new ArrayList<>();
         // Build the list of timeSlots
-        for (Map.Entry<String,String> entry: timeDayMap.entrySet()) {
+        for (Map.Entry<String,String> entry: keyValueMap.entrySet()) {
             TimeSlot current = new TimeSlot(entry.getKey(), entry.getValue());
             timeSlots.add(current);
         }
@@ -83,21 +80,21 @@ public class CsvFileService implements AnswersRepository {
         entryStore.save(userEntry);
     }
     public synchronized void save(Questions data) {
-        String[][] checkedDays = data.getCheckboxes();
-        Map<String,String> timeDayMap = new LinkedHashMap<>();
+        String[][] checkedValues = data.getCheckboxes();
+        Map<String,String> keyValueMap = new LinkedHashMap<>();
 
-        for (int i = 0; i < checkedDays.length; i++ ) {
-            String timeSlot = data.timeAt(i);
-            String days = "";
-            for (int j = 0; j < checkedDays[i].length; j++) {
-                if (checkedDays[i][j] != null) {
-                    days += (days.isEmpty()) ? checkedDays[i][j] : ", " + checkedDays[i][j];
+        for (int i = 0; i < checkedValues.length; i++ ) {
+            String timeSlot = data.keyAt(i);
+            String values = "";
+            for (int j = 0; j < checkedValues[i].length; j++) {
+                if (checkedValues[i][j] != null) {
+                    values += (values.isEmpty()) ? checkedValues[i][j] : ", " + checkedValues[i][j];
                 }
             }
             // Add timeSlot entry to map
-            timeDayMap.put(timeSlot, days);
+            keyValueMap.put(timeSlot, values);
         }
-        store(data, timeDayMap);
+        store(data, keyValueMap);
     }
 
     void appendEntries() {
@@ -118,14 +115,20 @@ public class CsvFileService implements AnswersRepository {
                         e.getFirstName(),
                         e.getLastName(),
                         e.getEmail(),
-                        timeDayMap.get("6pm Week 1"),
-                        timeDayMap.get("6:30pm Week 1"),
-                        timeDayMap.get("7pm Week 1"),
-                        timeDayMap.get("7:30pm Week 1"),
-                        timeDayMap.get("6pm Week 2"),
-                        timeDayMap.get("6:30pm Week 2"),
-                        timeDayMap.get("7pm Week 2"),
-                        timeDayMap.get("7:30pm Week 2"));
+                        timeDayMap.get("8/5 (Sat)"),   // 0
+                        timeDayMap.get("8/6 (Sun)"),   // 1
+                        timeDayMap.get("8/12 (Sat)"),  // 2
+                        timeDayMap.get("8/13 (Sun)"),  // 3
+                        timeDayMap.get("8/19 (Sat)"),  // 4
+                        timeDayMap.get("8/20 (Sun)"),  // 5
+                        timeDayMap.get("8/26 (Sat)"),  // 6
+                        timeDayMap.get("8/27 (Sun)"),  // 7
+                        timeDayMap.get("9/2 (Sat)"),   // 8
+                        timeDayMap.get("9/3 (Sun)"),   // 9
+                        timeDayMap.get("9/9 (Sat)"),   // 10
+                        timeDayMap.get("9/10 (Sun)"),  // 11
+                        timeDayMap.get("9/16 (Sat)"),  // 12
+                        timeDayMap.get("9/17 (Sun)")); // 13
 
                 // Flush results to file immediately...
                 printer.flush();

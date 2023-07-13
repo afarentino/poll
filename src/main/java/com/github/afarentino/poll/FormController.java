@@ -37,7 +37,8 @@ public class FormController {
 
         model.addAttribute("user", answers.getFirstName());
         model.addAttribute("questions", answers);
-
+        // TODO: Add this feature flag to layout
+        // model.addAttribute("admin", "true");
         return "thanks";
     }
 
