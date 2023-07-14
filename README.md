@@ -43,13 +43,27 @@ Any cloud provider can be used (AWS, Azure, Heroku, GCP).
 
 For it's ease of use and ability to scale from 0 to n instances as-needed on demand I chose [Google Cloud Platform App Engine](https://cloud.google.com/appengine/docs).  
 
+### GCP App Engine Deployment
+
+The following steps can be run from a local development environment shell.
+
+1. Create a GCP cloud account + download and install the gcloud command-line tool.
+2. Set the APP_MONGODB_CONN environment variable to the value consistent with your MONGODB Cloud Atlas cluster
+3. Change directories to the top-level directory of the poll project `cd $projectDir` 
+3. Use the Gradle wrapper to run the bootJar task `./gradlew bootJar` > **Note** > Boot jar will be assembled and generated to $projectDir/build/libs
+4. Use the Gradle wrapper to run the custom generateAppYaml task `./gradlew generateAppYaml` (An updated app.yaml that contains the value of `APP_MONGODB_CONN` will be generated to `$projectDir/build/libs)`
+5. `cd $projectDir/build/libs`
+6. Run `gcloud app deploy ./poll-0.0.3.SNAPSHOT.jar --appyaml=./app.yaml`
+
+If deployment succeeds, GCP App Engine will share the URL of your deployed application with you in the console
+
 This kept costs down and allowed the application to be spun up only when users clicked a link shared with them via email.
 
 ## Limitations
 1. At this time, it is a heavy lift to design, add or display alternate questions. A configurable question provider would be a great feature to have.
 
 
-2. Deployment instructions (for each cloud platform) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
+2. Deployment instructions (for additional cloud platform) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
 
 ## Contributing
 

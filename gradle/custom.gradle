@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.yaml:snakeyaml:2.0'
+    }
+}
+
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.DumperOptions
+import java.nio.file.Files
+import java.nio.file.Paths
+
+// Utility method that updates a yaml value based on the current value of a
+// System environment variable
+Object updateYamlValue(String fileName, String envVar, File destDir) {
+    File temp = new File(fileName)
+
+    def destFile = destDir.getAbsolutePath() + System.getProperty("file.separator") + temp.getName()
+    def updatedValue = System.getenv(envVar)
+    if (updatedValue == null) {
+        throw new GradleException("Environment variable $envVar is not set.")
+    }
+
+    // Read the YAML file
+    def dump = new DumperOptions()
+    dump.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+    dump.setPrettyFlow(true);
+    dump.setIndent(2);
+    dump.setCanonical(false);
+    dump.setExplicitStart(false);
+
+    def yaml = new Yaml(dump)
+    def data = (Map) yaml.load(Files.newInputStream(Paths.get(fileName)))
+
+    // Update the env_variables section
+    data['env_variables']."${envVar}" = updatedValue
+
+    // Write the updated YAML file
+    Files.write(Paths.get(destFile), yaml.dump(data).getBytes())
+    System.out.println("YAML file generated is: " + destFile)
+}
+
+tasks.register("generateAppYaml") {
+    group = "build"
+    description = "Generates the final GCP App Engine file to use during cloud deployment"
+    doLast {
+        def destDir = file("$buildDir/libs")
+        updateYamlValue("$projectDir/src/main/appengine/app.yaml", "APP_MONGODB_CONN", destDir)
+        System.out.print("APP_MONGODB_CONN updated")
+    }
+}
