@@ -39,31 +39,43 @@ popular No-Code Form Builders such as [SurveyMonkey](https://www.surveymonkey.co
 * Gradle 
 
 ## Deployment and Hosting
+
+### Intended Audience and Prerequisites ###
+This section of the guide is written for a developer interested in cloning this repository to modify it or deploy it as-is to their own environment.
+As such basic knowledge of MongoDB Cloud Atlas (setting up an account) and creating the required database to connect to is something that can be done. If you are interested, in additional steps on how to set this up I'm happy to provide them.
+
 Any cloud provider can be used (AWS, Azure, Heroku, GCP).  
 
-For it's ease of use and ability to scale from 0 to n instances as-needed on demand I chose [Google Cloud Platform App Engine](https://cloud.google.com/appengine/docs).  
+For its ease of use and ability to scale from 0 to n instances as needed on demand I chose [Google Cloud Platform App Engine](https://cloud.google.com/appengine/docs).  
 
-### GCP App Engine Deployment
+### GCP App Engine Local Build + Deployment
 
-The following steps can be run from a local development environment shell.
+The following steps can be run from a Unix-based Terminal.  I'm using `bash` as my shell in the samples below.  
 
-1. Create a GCP cloud account + download and install the gcloud command-line tool.
-2. Set the APP_MONGODB_CONN environment variable to the value consistent with your MONGODB Cloud Atlas cluster
-3. Change directories to the top-level directory of the poll project `cd $projectDir` 
-3. Use the Gradle wrapper to run the bootJar task `./gradlew bootJar` > **Note** > Boot jar will be assembled and generated to $projectDir/build/libs
-4. Use the Gradle wrapper to run the custom generateAppYaml task `./gradlew generateAppYaml` (An updated app.yaml that contains the value of `APP_MONGODB_CONN` will be generated to `$projectDir/build/libs)`
-5. `cd $projectDir/build/libs`
-6. Run `gcloud app deploy ./poll-0.0.3.SNAPSHOT.jar --appyaml=./app.yaml`
+Following these steps, keeps development costs down, as we essentially assemble the binary artifacts GCP requires for execution in an APP ENGINE environment ahead of time (on a local development or build server). It also allows the application to be spun up only when users clicked a link shared with them via email.
 
-If deployment succeeds, GCP App Engine will share the URL of your deployed application with you in the console
 
-This kept costs down and allowed the application to be spun up only when users clicked a link shared with them via email.
+1. Create a GCP cloud account
+2. Follow [Google's online guide](https://cloud.google.com/sdk/docs/install) to download + install the `gcloud` CLI <br>
+   ℹ️ **Note:** Make sure you have the recommended version of Python installed locally as outlined in the docs
+3. Use git to clone this repositories main branch
+4. Change directories to the top-level directory of the poll project `cd $projectDir`
+5. Set the APP_MONGODB_CONN environment variable to the value consistent with your MONGODB Cloud Atlas cluster
+6. Use the Gradle wrapper to run the bootJar task `./gradlew bootJar` <br>
+   ℹ️ **Note:** An executable jar file will be assembled and generated to `$projectDir/build/libs`
+7. Use the Gradle wrapper to run the custom generateAppYaml task `./gradlew generateAppYaml` <br>
+   ℹ️ **Note:** An updated `app.yaml` that contains the value of `APP_MONGODB_CONN` will be generated to `$projectDir/build/libs`
+8. `cd $projectDir/build/libs`
+9. Run `gcloud app deploy ./poll-0.0.3.SNAPSHOT.jar --appyaml=./app.yaml` <br>
+   ℹ️ **Note:** If deployment succeeds, GCP App Engine will share the URL of your running application with you in the console
+
 
 ## Limitations
-1. At this time, it is a heavy lift to design, add or display alternate questions. A configurable question provider would be a great feature to have.
+1. At this time, it is a heavy lift to design, add or display alternate questions. To make this single-question poll survey reusable in other contexts, a configurable question provider would be a great feature to have. <br>
+ℹ️ **Note:** See [GitHub issue #2](https://github.com/afarentino/poll/issues/2) for further details.
 
 
-2. Deployment instructions (for additional cloud platform) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
+2. Deployment instructions (for additional cloud platforms) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
 
 ## Contributing
 
