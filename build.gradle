@@ -1,3 +1,5 @@
+
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.3'
@@ -27,3 +29,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Apply custom build tasks
+apply from: "$projectDir/gradle/custom.gradle"
+
