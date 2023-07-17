@@ -53,7 +53,7 @@
             text-shadow: #444 0 1px 1px;
         }
     </style>
-    <title>BSG Meeting Date Survey</title>
+    <title>BSG Member Social Survey</title>
 </head>
 <body>
 <div class="jumbotron" th:replace="~{fragments/hero :: hero}">
@@ -116,6 +116,9 @@
                             <th scope="col">12pm</th>
                             <th scope="col">12:30pm</th>
                             <th scope="col">1pm</th>
+                            <th data-edit="rowControls">
+                                <button type="button" id="selectAllBtn" class="btn btn-secondary btn-rounded">Select All Dates and Times</button>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -151,6 +154,14 @@
                                     <label class="form-check-label d-none" for="1pm-8-5">1pm 8-5</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-5 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-5', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-5', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[1]" value="8/6 (Sun)"/>8/6 (Sun)</th>
@@ -182,6 +193,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[1][4]" id="1pm-8-6" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-8-6">1pm 8-6</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-6 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-6', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-6', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -217,6 +236,14 @@
                                     <label class="form-check-label d-none" for="1pm-8-12">1pm 8-12</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-12 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-12', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-12', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[3]" value="8/13 (Sun)"/>8/13 (Sun)</th>
@@ -248,6 +275,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[3][4]" id="1pm-8-13" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-8-13">1pm 8-13</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-13 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-13', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-13', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -283,6 +318,14 @@
                                     <label class="form-check-label d-none" for="1pm-8-19">1pm 8-19</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-19 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-19', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-19', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[5]" value="8/20 (Sun)"/>8/20 (Sun)</th>
@@ -314,6 +357,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[5][4]" id="1pm-8-20" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-8-20">1pm 8-20</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-20 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-20', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-20', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -349,6 +400,14 @@
                                     <label class="form-check-label d-none" for="1pm-8-26">1pm 8-26</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-26 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-26', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-26', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[7]" value="8/27 (Sun)"/>8/27 (Sun)</th>
@@ -380,6 +439,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[7][4]" id="1pm-8-27" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-8-27">1pm 8-27</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-27 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('8-27', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('8-27', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -415,6 +482,14 @@
                                     <label class="form-check-label d-none" for="1pm-9-2">1pm 9-2</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 9-2 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-2', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-2', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[9]" value="9/3 (Sun)"/>9/3 (Sun)</th>
@@ -446,6 +521,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[9][4]" id="1pm-9-3" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-9-3">1pm 9-3</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 9-3 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-3', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-3', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -481,6 +564,14 @@
                                     <label class="form-check-label d-none" for="1pm-9-9">1pm 9-9</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 9-9 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-9', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-9', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[11]" value="9/10 (Sun)"/>9/10 (Sun)</th>
@@ -512,6 +603,14 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="checkboxes[11][4]" id="1pm-9-10" value="1pm"/>
                                     <label class="form-check-label d-none" for="1pm-9-10">1pm 9-10</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-5 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-10', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-10', false)"
+                                            class="btn btn-info">Clear All Times</button>
                                 </div>
                             </td>
                         </tr>
@@ -547,6 +646,14 @@
                                     <label class="form-check-label d-none" for="1pm-9-16">1pm 9-16</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 8-5 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-16', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-16', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row"><input type="hidden" name="keys[13]" value="9/17 (Sun)"/>9/17 (Sun)</th>
@@ -580,11 +687,19 @@
                                     <label class="form-check-label d-none" for="1pm-9-17">1pm 9-17</label>
                                 </div>
                             </td>
+                            <td>
+                                <div class="btn-group btn-group-rounded btn-group-sm" role="group" aria-label="Date 9-17 Button Group">
+                                    <button type="button" onclick="toggleEntriesFor('9-17', true)"
+                                            class="btn btn-primary">Select All Times</button>
+                                    <button type="button" onclick="toggleEntriesFor('9-17', false)"
+                                            class="btn btn-info">Clear All Times</button>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Submit Answers"> <input class="btn btn-secondary" type="reset">
+                    <input class="btn btn-primary" type="submit" value="Submit Answers"> <input class="btn btn-secondary" type="reset" value="Clear All Answers">
                 </div>
             </form>
         </section>
@@ -614,5 +729,7 @@
         </div>
     </div>
 </footer>
+<!-- Client-side Javascript for the survey -->
+<script type="text/javascript" src="scripts/survey.js"></script>
 </body>
 </html>
