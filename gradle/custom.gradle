@@ -43,6 +43,7 @@ Object updateYamlValue(String fileName, String envVar, File destDir) {
 }
 
 tasks.register("generateAppYaml") {
+    dependsOn('bootJar')
     group = "build"
     description = "Generates the final GCP App Engine file to use during cloud deployment"
     doLast {
