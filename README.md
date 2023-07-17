@@ -32,17 +32,23 @@ popular No-Code Form Builders such as [SurveyMonkey](https://www.surveymonkey.co
 
 ## Technologies Used
 * Java 17
+* Modern Vanilla JavaScript - runs in any ES6+ web browser
 * [Spring Boot 3.0+](https://spring.io/blog/2022/05/24/preparing-for-spring-boot-3-0) 
 * [ThymeLeaf Java template engine](https://www.thymeleaf.org/) 
 * [MDBootstrap](https://mdbootstrap.com/) 
 * [MongoDB Atlas](https://www.mongodb.com/atlas/database) NoSQL document database - to store survey results
-* Gradle 
+* Gradle 7.6
 
 ## Deployment and Hosting
 
 ### Intended Audience and Prerequisites ###
 This section of the guide is written for a developer interested in cloning this repository to modify it or deploy it as-is to their own environment.
-As such basic knowledge of MongoDB Cloud Atlas (setting up an account) and creating the required database to connect to is something that can be done. If you are interested, in additional steps on how to set this up I'm happy to provide them.
+To use it, a basic knowledge of MongoDB Cloud Atlas db administration is required
+1. Setting up an account 
+2. Creating the required database (answers0) 
+3. Extracting the correct connection string to use from Spring
+
+If you are interested in additional details on these pre-reqs up I'm happy to provide them.
 
 Any cloud provider can be used (AWS, Azure, Heroku, GCP).  
 
