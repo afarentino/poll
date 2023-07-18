@@ -32,17 +32,23 @@ popular No-Code Form Builders such as [SurveyMonkey](https://www.surveymonkey.co
 
 ## Technologies Used
 * Java 17
+* Modern Vanilla JavaScript - runs in any ES6+ web browser
 * [Spring Boot 3.0+](https://spring.io/blog/2022/05/24/preparing-for-spring-boot-3-0) 
 * [ThymeLeaf Java template engine](https://www.thymeleaf.org/) 
 * [MDBootstrap](https://mdbootstrap.com/) 
 * [MongoDB Atlas](https://www.mongodb.com/atlas/database) NoSQL document database - to store survey results
-* Gradle 
+* Gradle 7.6
 
 ## Deployment and Hosting
 
 ### Intended Audience and Prerequisites ###
 This section of the guide is written for a developer interested in cloning this repository to modify it or deploy it as-is to their own environment.
-As such basic knowledge of MongoDB Cloud Atlas (setting up an account) and creating the required database to connect to is something that can be done. If you are interested, in additional steps on how to set this up I'm happy to provide them.
+To use it, a basic knowledge of MongoDB Cloud Atlas db administration is required
+1. Setting up an account 
+2. Creating the required database (answers0) 
+3. Extracting the correct connection string to use from Spring
+
+If you are interested in additional details on these pre-reqs up I'm happy to provide them.
 
 Any cloud provider can be used (AWS, Azure, Heroku, GCP).  
 
@@ -66,7 +72,7 @@ Following these steps, keeps development costs down, as we essentially assemble 
 7. Use the Gradle wrapper to run the custom generateAppYaml task `./gradlew generateAppYaml` <br>
    ℹ️ **Note:** An updated `app.yaml` that contains the value of `APP_MONGODB_CONN` will be generated to `$projectDir/build/libs`
 8. `cd $projectDir/build/libs`
-9. Run `gcloud app deploy ./poll-0.0.3.SNAPSHOT.jar --appyaml=./app.yaml` <br>
+9. Run `gcloud app deploy ./poll-0.0.3-SNAPSHOT.jar --appyaml=./app.yaml` <br>
    ℹ️ **Note:** If deployment succeeds, GCP App Engine will share the URL of your running application with you in the console
 
 
@@ -76,6 +82,7 @@ Following these steps, keeps development costs down, as we essentially assemble 
 
 
 2. Deployment instructions (for additional cloud platforms) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
+3. The survey works best on desktop/laptop systems or tablets with larger screen sizes.  On Mobile, we do use some of MDBootstraps built-in breakpoints to adjust positioning of text boxes (based on screen size), but the available dates table uses the "table-responsive" CSS class.  This allows the content to be viewable using a horizontal scrollbar. An alternate UX design optimized for smaller screen sizes that avoids scrolling would be a future nice-to-have. 
 
 ## Contributing
 
