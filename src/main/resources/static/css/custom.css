@@ -1,15 +1,27 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .jumbotron {
     background: linear-gradient(
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
     ), url('../../images/Quiz.jpg') no-repeat left center;
     background-size: cover;
-    height: 100%;
-    min-height: 400px;
+    height: 25vh;
+    width: 100vw;
+    min-height: 250px;
+    margin: 0;
+    padding: 0;
     color: white;
     text-shadow: #444 0 1px 1px;
 }
 
+.form-outline {
+    max-width: 196px;
+}
 
 table td,
 table th {
@@ -31,3 +43,11 @@ thead {
     position: sticky;
     z-index: 999;
 }
+
+.footer {
+    height: 15vh;
+    width: 100vw;
+    min-height: 200px;
+}
+
+

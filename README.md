@@ -72,7 +72,7 @@ Following these steps, keeps development costs down, as we essentially assemble 
 7. Use the Gradle wrapper to run the custom generateAppYaml task `./gradlew generateAppYaml` <br>
    ℹ️ **Note:** An updated `app.yaml` that contains the value of `APP_MONGODB_CONN` will be generated to `$projectDir/build/libs`
 8. `cd $projectDir/build/libs`
-9. Run `gcloud app deploy ./poll-0.0.3.SNAPSHOT.jar --appyaml=./app.yaml` <br>
+9. Run `gcloud app deploy ./poll-0.0.3-SNAPSHOT.jar --appyaml=./app.yaml` <br>
    ℹ️ **Note:** If deployment succeeds, GCP App Engine will share the URL of your running application with you in the console
 
 
@@ -82,6 +82,7 @@ Following these steps, keeps development costs down, as we essentially assemble 
 
 
 2. Deployment instructions (for additional cloud platforms) and automated steps to provision any required infrastructure (including the MongoDB Atlas database) would also be a nice-to-have. 
+3. The survey works best on desktop/laptop systems or tablets with larger screen sizes.  On Mobile, we do use some of MDBootstraps built-in breakpoints to adjust positioning of text boxes (based on screen size), but the available dates table uses the "table-responsive" CSS class.  This allows the content to be viewable using a horizontal scrollbar. An alternate UX design optimized for smaller screen sizes that avoids scrolling would be a future nice-to-have. 
 
 ## Contributing
 
