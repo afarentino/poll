@@ -48,7 +48,7 @@ To use it, a basic knowledge of MongoDB Cloud Atlas db administration is require
 2. Creating the required database (answers0) 
 3. Extracting the correct connection string to use from Spring
 
-If you are interested in additional details on these pre-reqs up I'm happy to provide them.
+If you are interested in additional details on these prereqs ask -- I'm happy to provide them.
 
 Any cloud provider can be used (AWS, Azure, Heroku, GCP).  
 
