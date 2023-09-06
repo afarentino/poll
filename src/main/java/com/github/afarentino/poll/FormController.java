@@ -37,11 +37,11 @@ public class FormController {
 
         model.addAttribute("user", answers.getFirstName());
         model.addAttribute("questions", answers);
-        // TODO: Add this feature flag to layout
-        // model.addAttribute("admin", "true");
+        model.addAttribute("admin", "true");
         return "thanks";
     }
 
+    // If user hits this endpoint they will need to login.
     @GetMapping(value= "/survey/results")
     @ResponseBody
     public ResponseEntity<Resource> csvDownload() throws IOException {
